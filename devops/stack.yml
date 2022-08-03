@@ -19,7 +19,7 @@ services:
         - "traefik.http.routers.test-yavishop-secure.tls.certresolver=http"
         - "traefik.http.routers.test-yavishop-secure.service=test-yavishop"
         - "traefik.http.services.test-yavishop.loadbalancer.server.port=80"
-        - "traefik.docker.network=traefik-public"
+        - "traefik.docker.network=traefik-public"		
   yavishop-backend:
     image: yavishop-backend:latest
     networks:
@@ -39,9 +39,42 @@ services:
         - "traefik.http.routers.backend-test-secure.service=backend-test"
         - "traefik.http.services.backend-test.loadbalancer.server.port=3000"
         - "traefik.docker.network=traefik-public"
+  yavishop_db:
+    image: mysql:5.7
+    environment:
+      - MYSQL_DATABASE=ys_db
+      - MYSQL_ROOT_PASSWORD=1234
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=1234
+    volumes:
+      - yavishop_data:/var/lib/mysql
+    networks:
+      - yavishop-networks
+  adminer:
+    image: adminer
+    networks:
+      - yavishop-networks
+      - traefik-public
+    deploy:
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.adminer-yavishop.entrypoints=http"
+        - "traefik.http.routers.adminer-yavishop.rule=Host(`adminer-yavishop.sistemaagil.net`)"
+        - "traefik.http.middlewares.adminer-yavishop-https-redirect.redirectscheme.scheme=https"
+        - "traefik.http.routers.adminer-yavishop.middlewares=adminer-yavishop-https-redirect"
+        - "traefik.http.routers.adminer-yavishop-secure.entrypoints=https"
+        - "traefik.http.routers.adminer-yavishop-secure.rule=Host(`adminer-yavishop.sistemaagil.net`)"
+        - "traefik.http.routers.adminer-yavishop-secure.tls=true"
+        - "traefik.http.routers.adminer-yavishop-secure.tls.certresolver=http"
+        - "traefik.http.routers.adminer-yavishop-secure.service=adminer-yavishop"
+        - "traefik.http.services.adminer-yavishop.loadbalancer.server.port=8080"
+        - "traefik.docker.network=traefik-public"    
+
 networks:
   traefik-public:
     external: true
   yavishop-networks:
     external: true
-
+volumes:
+  yavishop_data:
+    external: true
