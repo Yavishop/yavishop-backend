@@ -16,7 +16,7 @@ app.set('port',port)
 
 // simple route
 app.get("/", (req, res) => {
-    res.json({ message: "Bienvenido a YAVISHOP." });
+    res.json({ message: "Prueba en el back YAVISHOP de jenkins." });
   });
 //inicializar express 
 app.listen(app.get('port'),(error)=>{
