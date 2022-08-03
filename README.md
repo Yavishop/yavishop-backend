@@ -1,1 +1,6 @@
-# yavishop-backend
+# Yavishop-backend
+
+## SEBASTIAN NARANJO
+## KEVIN PILLAJO
+## ROMMEL BURGOS
+## JEYSSON MOLINA
