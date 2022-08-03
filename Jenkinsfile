@@ -11,7 +11,7 @@ pipeline {
                 label 'integracion'
             }
             steps{
-                sh 'docker build -f devops/Dockerfile -t backend-yavishop:latest .'
+                sh 'docker build -f devops/Dockerfile -t yavishop-backend:latest .'
                 sh 'docker stack rm yavishop-na'
                 sh 'docker stack deploy -c devops/stack.yml yavishop-na'
             }    
