@@ -39,17 +39,6 @@ services:
         - "traefik.http.routers.backend-test-secure.service=backend-test"
         - "traefik.http.services.backend-test.loadbalancer.server.port=3000"
         - "traefik.docker.network=traefik-public"
-
-<<<<<<< HEAD
-=======
-  db:
-    imagen:mysql: mysql:8
-    
-    networks: 
-      - yavishop-networks
-      - traefik-public
->>>>>>> 539ac9b36c17e16f89c43729b84ab6f6fcc49788
-
 networks:
   traefik-public:
     external: true
