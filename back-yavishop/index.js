@@ -18,7 +18,7 @@ app.set('port',port)
 app.get("/", (req, res) => {
     res.json({ message: "Bienvenido a YAVISHOP." });
   });
-//inicializar express
+//inicializar express 
 app.listen(app.get('port'),(error)=>{
     if(error)
     {console.log('error al iniciar el servidor: '+error)}
