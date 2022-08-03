@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        PROJEC_NAME = "backend-tendencias"
+        PROJEC_NAME = "Backend-tendencias"
         TAGS = 'sistemaagil'
         HOME = '.'
     }    
