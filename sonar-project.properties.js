@@ -9,7 +9,7 @@ scanner(
         'sonar.projectName': 'Backend-tendencias',
         'sonar.projectDescription': 'Description for "My App" project...',
         'sonar.sourceEncoding':'UTF-8',
-        'sonar.sources': 'src',
+        'sonar.sources': '.',
         'sonar.javascript.lcov.reportPaths': 'coverage/jest/lcov.info'
       }
     },
