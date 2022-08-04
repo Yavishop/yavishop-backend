@@ -1,4 +1,4 @@
-//const {database} = require('./config/conexion');
+const {database} = require('./config/conexion');
 const express = require('express');
 const port = (process.env.port || 3000)
 
@@ -12,7 +12,7 @@ app.use(express.json())
 app.set('port',port)
 
 //rutas
-//app.use('/api',require('./rutas/rutas.producto'))
+app.use('/api/producto',require('./rutas/rutas.producto'))
 
 // simple route
 app.get("/", (req, res) => {

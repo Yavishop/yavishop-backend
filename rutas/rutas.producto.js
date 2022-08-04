@@ -4,8 +4,8 @@ const conexion = require('../config/conexion')
 
 //---------- agregamos rutas--------
 //get productos
-rutas.get('/',(req, res)=>{
-    let sql ='select * from ys_producto'
+rutas.get('/lista',(req, res)=>{
+    let sql ='select * from productos'
     conexion.query(sql,(err, rows, fields)=>{
         if(err) throw err;
         else{
@@ -16,9 +16,9 @@ rutas.get('/',(req, res)=>{
 })
 
 // get un producto
-rutas.get('/:id',(req, res)=>{
+rutas.get('producto/detalle:id',(req, res)=>{
     const {id} = req.params
-    let sql ='select * from ys_producto where id_producto = ?'
+    let sql ='select * from productos where id = ?'
     conexion.query(sql,[id],(err, rows, fields)=>{
         if(err) throw err;
         else{
@@ -28,9 +28,9 @@ rutas.get('/:id',(req, res)=>{
 })
 
 //agregar producto
-rutas.post('/',( req, res)=>{
-    const{nombre, p_compra, p_venta,stock,imagen,detalle,estado} = req.body
-    let sql = `INSERT INTO ys_producto(nombre,p_compra, p_venta, stock, imagen, detalle, estado) VALUES ('${nombre}','${p_compra}','${p_venta}','${stock}','${imagen}','${detalle}','${estado}')`
+rutas.post('/add',( req, res)=>{
+    const{nombre, p_compra, p_venta,stock,detalle,imagen,estado} = req.body
+    let sql = `INSERT INTO productos (nombre,pcompra, pventa, stock, imagen, detalle, estado) VALUES ('${nombre}','${p_compra}','${p_venta}','${stock}','${imagen}','${detalle}','${estado}')`
 
     conexion.query(sql, (err, rows, fields)=>{
         if(err) throw err
@@ -41,10 +41,10 @@ rutas.post('/',( req, res)=>{
 })
 
 //eliminar 
-rutas.delete('/:id',(req, res)=>{
+rutas.delete('/delete:id',(req, res)=>{
     const{id} = req.params
 
-    let sql =`delete from ys_producto where id_producto = '${id}'`
+    let sql =`delete from productos where id = '${id}'`
     conexion.query(sql, (err, rows, fields)=>{
         if(err) throw err
         else{
@@ -54,19 +54,19 @@ rutas.delete('/:id',(req, res)=>{
 });
 
 //modificar
-rutas.put('/:id',(req, res)=>{
+rutas.put('/editar:id',(req, res)=>{
     const{id}=req.params
-    const{nombre, p_compra, p_venta,stock,imagen,detalle,estado} = req.body
+    const{nombre, p_compra, p_venta,stock,detalle,imagen,estado} = req.body
 
-    let sql = `update ys_producto set 
+    let sql = `update productos set 
                 nombre ='${nombre}',
-                p_compra='${p_compra}',
-                p_venta='${p_venta}',
-                stock='${stock}',
-                imagen='${imagen}',
+                pcompra='${p_compra}',
+                pventa='${p_venta}',
+                stock='${stock}',                
                 detalle='${detalle}',
+                imagen='${imagen}',
                 estado='${estado}'
-                where id_producto = '${id}'`
+                where id = '${id}'`
     
     conexion.query(sql, (err, rows, fields)=>{
         if(err) throw err
