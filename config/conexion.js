@@ -1,11 +1,11 @@
 const mysql = require('mysql');
+const{database}=require("../keys")
 
 const conexion = mysql.createConnection({
-    host: 'localhost',
-    user: 'admin',
-    password: '',
-    port:'3306',
-    database: 'ys_db'
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DATABASE_NAME
 });
 
 conexion.connect((err)=>{
