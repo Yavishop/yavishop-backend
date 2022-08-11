@@ -7,7 +7,7 @@ module.exports = app => {
       // Retrieve all Tutorials
     router.get("/", usuarios.findAll);
       // Retrieve all published Tutorials
-    router.get("/published", usuarios.findAllPublished);
+    router.get("/AllUsuarios", usuarios.findAllPublished);
       // Retrieve a single Tutorial with id
     router.get("/:id", usuarios.findOne);
       // Update a Tutorial with id
@@ -16,6 +16,6 @@ module.exports = app => {
     router.delete("/:id", usuarios.delete);
       // Delete all usuarios
     router.delete("/", usuarios.deleteAll);
-      app.use('/api/tutorials', router);
+      app.use('/api/usuarios', router);
   };
   

@@ -11,7 +11,7 @@ exports.create = (req, res) => {
         return;
     }
     // Crea el Producto
-    const producto = {
+    const usuario = {
         nombre: req.body.nombre,
         apellido: req.body.apellido,
         cedula: req.body.cedula,
