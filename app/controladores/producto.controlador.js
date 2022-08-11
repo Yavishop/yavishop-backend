@@ -1,4 +1,4 @@
-const db = require("../modelos");
+//const db = require("../modelos");
 const Producto = db.producto;
 const Op = db.Sequelize.Op;
 // Crea y guarda el nuevo producto
@@ -35,7 +35,7 @@ exports.create = (req, res) => {
 // Recuperar todos los productos de la db.
 exports.findAll = (req, res) => {
     const nombre = req.query.nombre;
-    var condicion = nombre ? { tinombretle: { [Op.like]: `%${nombre}%` } } : null;
+    var condicion = nombre ? { nombre: { [Op.like]: `%${nombre}%` } } : null;
     Producto.findAll({ where: condicion })
         .then(data => {
             res.send(data);
