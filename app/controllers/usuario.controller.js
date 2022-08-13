@@ -35,7 +35,7 @@ exports.create = (req, res) => {
 exports.findAll = (req, res) => {
     const nombre = req.query.nombre;
     var condicion = nombre ? { nombre: { [Op.like]: `%${nombre}%` } } : null;
-    Producto.findAll({ where: condicion })
+    Usuario.findAll({ where: condicion })
         .then(data => {
             res.send(data);
         })
