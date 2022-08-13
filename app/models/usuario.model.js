@@ -1,5 +1,8 @@
 module.exports = (sequelize, Sequelize) => {
-    const Usuario= sequelize.define("usuario", {
+    const User= sequelize.define("usuario", {
+      username: {
+        type: Sequelize.STRING
+      },
       nombre: {
         type: Sequelize.STRING
       },
@@ -9,15 +12,15 @@ module.exports = (sequelize, Sequelize) => {
       cedula: {
         type: Sequelize.STRING
       },
-      correo: {
+      email: {
         type: Sequelize.STRING
       },
-      contraseña: {
+      password: {
         type: Sequelize.STRING
       },
       estado: {
         type: Sequelize.BOOLEAN
       }
     });
-    return Usuario;
+    return User;
   };

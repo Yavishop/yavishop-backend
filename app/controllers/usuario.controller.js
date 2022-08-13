@@ -12,10 +12,11 @@ exports.create = (req, res) => {
     }
     // Crea el Producto
     const usuario = {
+        username: req.body.username,
         nombre: req.body.nombre,
         apellido: req.body.apellido,
         cedula: req.body.cedula,
-        correo: req.body.correo,
+        email: req.body.email,
         password: req.body.password,
         estado: req.body.estado ? req.body.estado : false
     };
@@ -128,7 +129,7 @@ Usuario.destroy({
         });
 };
 // Encuentra todos los Productos publicados
-exports.findAllProductosPublicados = (req, res) => {
+exports.findAllUsuarioPublicados = (req, res) => {
     Usuario.findAll({ where: { estado: true } })
         .then(data => {
             res.send(data);
@@ -139,4 +140,20 @@ exports.findAllProductosPublicados = (req, res) => {
                     err.mensaje || "Ocurrió algún error al recuperar usuarios."
             });
         });
+};
+
+exports.allAccesos = (req, res) => {
+  res.status(200).send("Contenido Publico.");
+};
+
+exports.userTablero = (req, res) => {
+  res.status(200).send("Contenido Usuario.");
+};
+
+exports.adminTablero = (req, res) => {
+  res.status(200).send("Contenido Admin");
+};
+
+exports.moderadorTablero = (req, res) => {
+  res.status(200).send("Contenido Moderador");
 };

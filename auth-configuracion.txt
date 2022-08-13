@@ -1,0 +1,31 @@
+INSERT INTO roles VALUES (1, 'user', now(), now());
+INSERT INTO roles VALUES (2, 'moderador', now(), now());
+INSERT INTO roles VALUES (3, 'admin', now(), now());
+select * from roles;
+
+ruta para el thunder client
+localhost:8080/api/auth/registro
+add sql para la ruta de arriba
+{
+  "username":"mod",
+  "email":"mod@sebas.com",
+  "password":"123456789",
+  "roles":["moderador","user"]
+}
+
+{
+  "username":"admin",
+  "email":"admin@sebas.com",
+  "password":"123456789",
+  "roles":["admin","user"]
+}
+
+{
+  "username":"user",
+  "email":"user@sebas.com",
+  "password":"123456789",
+  "roles":["user"]
+}
+select * from users;
+
+select * from user_roles;
