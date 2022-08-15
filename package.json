@@ -12,7 +12,7 @@
     "rest",
     "api",
     "jwt",
-    "login",    
+    "login",
     "registro",
     "sequelize",
     "authentication",
